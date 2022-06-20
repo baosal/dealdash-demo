@@ -1,0 +1,18 @@
+.wraper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 183px;
+    // height: 1800px;
+    flex-grow: 1;
+    justify-content: space-between;
+    // height: 100px;
+    // overflow: auto;
+    :global {
+        .fill-space {
+            flex-grow: 1;
+        }
+        .test {
+            color: red;
+        }
+    }
+}

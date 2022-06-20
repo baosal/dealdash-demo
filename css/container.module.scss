@@ -1,0 +1,54 @@
+$mobile-width: 792px;
+$tablet-width: 966px;
+$desktop-width: 1160px;
+
+@mixin mobile {
+    @media (max-width: #{$tablet-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+        @content;
+    }
+}
+
+.container {
+    background-color: rgb(238, 238, 238);
+    overflow: auto;
+    min-height: 100vh;
+    :global {
+        .dashboard {
+            position: relative;
+            min-width: $mobile-width;
+            max-width: $desktop-width;
+            margin: auto;
+
+            @include mobile {
+                padding: 0 Max(calc((100vw - $mobile-width)/2), 0px);
+            }
+            @include tablet {
+                padding: 0 Max(calc((100vw - $tablet-width)/2), 0px);
+            }
+            @include desktop {
+                padding: 0;
+            }
+            // padding: 0 Max(calc(50vw - 482px), calc(50vw - 578px), 0px);
+            >*:not(.list-card) {
+                margin: 0 5px !important;
+            }
+
+            #thumbnail {
+                height: 18vw;
+            }
+        }
+
+    }
+}
