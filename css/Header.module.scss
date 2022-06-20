@@ -1,0 +1,29 @@
+.wraper {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin-top: 16px;
+    margin-bottom: 8px;
+
+    :global {
+        .background {
+            text-align: center;
+            flex-grow: 1;
+            background-image: linear-gradient(rgb(254, 254, 254), rgb(221, 221, 221));
+            padding: 12px;
+
+            &:hover {
+                background-image: linear-gradient(rgb(255, 255, 255),
+                        rgb(242, 242, 242),
+                        rgb(242, 242, 242));
+            }
+
+            &:not(:last-child) {
+                border-right-style: solid;
+                border-right-width: 1px;
+                border-right-color: rgb(238, 238, 238);
+            }
+        }
+    }
+}

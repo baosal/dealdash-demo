@@ -1,0 +1,43 @@
+.wraper {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    overflow: hidden;
+
+    :global {
+        .flex {
+            display: flex;
+            justify-content: center;
+            border: 1px solid rgb(213, 213, 213);
+            border-radius: 10px;
+            background-image: linear-gradient(rgb(254, 254, 254), rgb(221, 221, 221));
+            overflow: hidden;
+        }
+
+        .background {
+            text-align: center;
+            padding: 4px 16px;
+            width: fit-content;
+            font-size: 14px;
+
+            &:hover {
+                background-image: linear-gradient(rgb(255, 255, 255),
+                        rgb(242, 242, 242),
+                        rgb(242, 242, 242));
+            }
+
+            &:not(:last-child) {
+                border-right-style: solid;
+                border-right-width: 1px;
+                border-right-color: rgb(238, 238, 238);
+            }
+
+            &.disabled {
+                color: rgb(213, 213, 213);
+                text-shadow: rgb(255 255 255) 1px 1px 0px;
+            }
+        }
+    }
+}

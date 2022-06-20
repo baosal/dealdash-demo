@@ -1,0 +1,75 @@
+.wraper {
+    :global {
+        .background {
+            background-image: linear-gradient(rgb(221, 221, 221), rgb(254, 254, 254));
+        }
+        .wraper {
+            margin: auto;
+            display: flex;
+            justify-content: start;
+            padding-left: 4px;
+            padding-right: 4px;
+            margin: auto;
+            width: fit-content;
+            >.column {
+                width: 214px;
+            }
+        }
+
+        .column {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 20px;
+        }
+
+        .group-label {
+            padding-bottom: 20px;
+            font-weight: bold;
+            font-size: 19px;
+            color: rgb(0, 0, 0);
+        }
+
+
+        .text {
+            font-size: 14px;
+            text-align: left;
+            color: rgb(38, 38, 38);
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-top: 4px;
+            padding-bottom: 12px;
+            border-radius: 2px;
+        }
+
+        .date {
+            font: 16px;
+            color: rgb(0, 0, 0);
+        }
+
+        .promotion {
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 95%;
+        }
+
+        .center {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .flex {
+            margin-top: 20px;
+            line-height: 20%;
+        }
+
+        .bottom {
+            text-align: center;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            font-size: 16px;
+            color: rgb(187, 187, 187);
+        }
+    }
+}
