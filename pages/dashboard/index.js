@@ -1,7 +1,7 @@
 import { getSortedPostsData } from 'libs/posts';
 import Image from "next/image"
 import style from 'css/Dashboard.module.scss'
-import ListCard from 'components/ListCard'
+import ItemContainer from 'components/ItemContainer'
 import Header from 'components/Header'
 import Pagination from 'components/Pagination'
 import Footer from 'components/Footer';
@@ -15,7 +15,7 @@ export default (props) => {
             <Header></Header>
             <Image id="thumbnail" height={145} width={777} layout="responsive" src={'/Thumbnail.png'}></Image>
             <div className="list-card">
-                <ListCard />
+                <ItemContainer />
             </div>
             <Pagination></Pagination>
         </div>

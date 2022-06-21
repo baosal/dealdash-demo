@@ -6,6 +6,10 @@
     text-align: center;
 
     :global {
+        .item__bottom {
+            display: flex;
+        }
+
         .item__name {
             font-size: 12px;
         }
@@ -13,6 +17,13 @@
         .item__image {
             width: auto;
             height: 112px;
+        }
+
+        .item__bid-price {
+            padding-top: 10px;
+            color: rgb(0, 100, 49);
+            font-size: 19px;
+            font-weight: bold;
         }
 
         .item__bid-time {
@@ -40,17 +51,23 @@
         }
 
         .item__button {
-            height: 36px;
-            margin-top: 10px;
+            height: 34px;
+            background-image: linear-gradient(rgb(105, 110, 119), rgb(74, 76, 83));
+            color: rgb(213, 213, 213);
+            text-shadow: rgb(51 51 51) 1px 1px 0px;
             text-align: center;
             font-size: 20px;
             font-weight: bold;
             border: 1px solid black;
             border-width: 1px 0;
-            background-image: linear-gradient(rgb(242, 234, 100), rgb(233, 200, 72));
             display: flex;
             align-items: center;
             justify-content: center;
+            &.can-bid {
+                text-shadow: rgb(242 234 100) 1px 1px 0px;
+                color: black;
+                background-image: linear-gradient(rgb(242, 234, 100), rgb(233, 200, 72));
+            }
         }
 
         .item__buy-now {
@@ -64,9 +81,11 @@
             justify-content: center;
             height: 27px;
             text-shadow: rgb(247 247 247) 1px 1px 0px;
+
             &:hover {
                 background-image: linear-gradient(rgb(255, 255, 255), rgb(242, 242, 242), rgb(242, 242, 242));
             }
         }
+
     }
 }

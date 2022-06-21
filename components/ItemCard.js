@@ -1,9 +1,20 @@
 import style from 'css/ItemCard.module.scss'
 import Image from "next/image"
-import { Fragment, memo } from 'react'
+import BidCooldown from "components/BidCooldown"
+import Price from "components/ItemPrice"
+import { Fragment, memo, useRef } from 'react'
 
-const ItemCard = memo(({ item }) => {
-    // console.log('re render', item.id);
+const ItemCard = memo(({ item = {} }) => {
+    console.log('re render item_row', item && item.id);
+    const refPrice = useRef()
+    const glowing = useRef()
+    const onUpdate = () => {
+        refPrice.current.increasePrice()
+        glowing.current.classList.add('glowing')
+        setTimeout(() => {
+            glowing.current.classList.remove('glowing')
+        }, 2000)
+    }
     return (
         <div className={style['item-wraper']}>
             {!item ?
@@ -21,18 +32,31 @@ const ItemCard = memo(({ item }) => {
                     </div>
 
                     <div className='item__bottom'>
-                        <div className="item__bid-time">
-                            {item.bidTime}
+                        <div style={{ flex: 1 }} ref={glowing}>
+                            {item.canBid ?
+                                <Fragment>
+                                    <Price price={item.price} ref={refPrice}></Price>
+                                    <div className="item__bid-duration">
+                                        {item.user}
+                                    </div>
+                                </Fragment>
+                                :
+                                <Fragment>
+                                    <div className="item__bid-time">
+                                        {item.bidBeginAt}
+                                    </div>
+                                    <div className="item__bid-duration">
+                                        {item.bidDuration}
+                                    </div>
+                                </Fragment>
+                            }
+                            <div className="item__bid-cooldown">
+                                <BidCooldown cooldown={item.bidCooldown} onUpdate={onUpdate}></BidCooldown>
+                            </div>
                         </div>
-                        <div className="item__bid-duration">
-                            {item.bidDuration}
-                        </div>
-                        <div className="item__bid-cooldown">
-                            {item.bidCooldown}
-                        </div>
-                        <div className="item__button">
+                        <div className={`item__button ${item.canBid ? 'can-bid' : ''}`}>
                             <div>
-                                {item.bidButton}
+                                {item.canBid ? "BID NOW" : "STARTING SOON"}
                             </div>
                         </div>
                         <div className="item__buy-now">
@@ -56,9 +80,24 @@ const ItemCard = memo(({ item }) => {
                     flex-flow: column;
                     background-image: linear-gradient(rgb(221, 221, 221), rgb(254, 254, 254));
                 }
+                .glowing {
+                    animation-name: custom;
+                    animation-duration: 1s;
+                }
+                
+                @keyframes custom {
+                    0% {
+                        background-color: linear-gradient(rgb(221, 221, 221), rgb(254, 254, 254));
+                    }
+                    10% {
+                        background-color: #f99e00;
+                    }
+                    100% {
+                        background-color: linear-gradient(rgb(221, 221, 221), rgb(254, 254, 254));
+                    }
+                }
             `}</style>
         </div >
     )
 })
-
 export default ItemCard
