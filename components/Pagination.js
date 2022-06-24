@@ -1,4 +1,4 @@
-import style from 'css/Pagination.module.scss'
+import style from 'components/Pagination.module.scss'
 
 export default () => {
     return (

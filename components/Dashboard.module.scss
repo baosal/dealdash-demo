@@ -24,6 +24,7 @@ $desktop-width: 1160px;
     background-color: rgb(238, 238, 238);
     overflow: auto;
     min-height: 100vh;
+
     :global {
         .dashboard {
             position: relative;
@@ -34,22 +35,27 @@ $desktop-width: 1160px;
             @include mobile {
                 padding: 0 Max(calc((100vw - $mobile-width)/2), 0px);
             }
+
             @include tablet {
                 padding: 0 Max(calc((100vw - $tablet-width)/2), 0px);
             }
+
             @include desktop {
                 padding: 0;
             }
+
             // padding: 0 Max(calc(50vw - 482px), calc(50vw - 578px), 0px);
-            >*:not(.list-card) {
+            >* {
                 margin-left: 5px;
                 margin-right: 5px;
             }
+
             #logo {
                 position: relative;
                 width: 251px;
                 height: 80px;
             }
+
             #thumbnail {
                 padding-left: 5px !important;
                 padding-right: 5px !important;

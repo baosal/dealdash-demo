@@ -1,6 +1,5 @@
-import { getSortedPostsData } from 'libs/posts';
 import Image from "next/image"
-import style from 'css/Dashboard.module.scss'
+import style from 'components/Dashboard.module.scss'
 import ItemContainer from 'components/item/ItemContainer'
 import Header from 'components/Header'
 import Pagination from 'components/Pagination'
@@ -14,20 +13,9 @@ export default (props) => {
             </div>
             <Header></Header>
             <Image id="thumbnail" height={145} width={777} layout="responsive" src={'/Thumbnail.png'}></Image>
-            <div className="list-card">
-                <ItemContainer />
-            </div>
+            <ItemContainer className="list-card" />
             <Pagination></Pagination>
         </div>
         <Footer></Footer>
     </div>
-}
-
-export async function getStaticProps() {
-    const allPostsData = getSortedPostsData();
-    return {
-        props: {
-            allPostsData,
-        },
-    };
 }

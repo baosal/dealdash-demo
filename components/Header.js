@@ -1,4 +1,4 @@
-import style from 'css/Header.module.scss'
+import style from 'components/Header.module.scss'
 
 export default () => {
     return (

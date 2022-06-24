@@ -9,20 +9,16 @@ import {
 } from 'store/feature/item/ItemSlice'
 
 import ItemCard from 'components/item/ItemCard'
-import getMockData from 'store/feature/item/itemAPI'
 const RowItems = memo(({ itemsPerRow = 6, rowIndex }) => {
     const scrollEl = useRef()
     const dispatch = useDispatch()
-    const [items, setItems] = useState(new Array(itemsPerRow).fill(null))
     const [isDataFetched, setisDataFetched] = useState(false)
     const startId = (rowIndex - 1) * itemsPerRow + 1
     const endId = rowIndex * itemsPerRow
     const itemIds = useMemo(() => Array(endId - startId + 1).fill().map((_, idx) => startId + idx), [itemsPerRow, rowIndex])
-    const itemsInStore = useSelector(selectItems(itemIds))
+    const items = useSelector(selectItems(itemIds))
     const fetchData = async () => {
         setisDataFetched(true)
-        const data = await getMockData(itemIds)
-        setItems(data)
         dispatch(fetchItem(itemIds))
     }
     function checkAndFetchData() {
@@ -30,10 +26,7 @@ const RowItems = memo(({ itemsPerRow = 6, rowIndex }) => {
         var elemTopToWindowTop = rect.top;
         var elemBottomToWindowTop = rect.bottom;
 
-        // Only completely visible elements return true:
         // const isVisible = (elemTopToWindowTop >= 0) && (elemBottomToWindowTop <= window.innerHeight);
-
-        // Partially visible elements return true:
         const isVisible = elemBottomToWindowTop >= 0 && elemTopToWindowTop < window.innerHeight;
 
         if (isVisible) {
@@ -51,7 +44,7 @@ const RowItems = memo(({ itemsPerRow = 6, rowIndex }) => {
     }, [isDataFetched])
     return (
         <div ref={scrollEl} className='row-items'>
-            {itemsInStore.map((item, index) =>
+            {items.map((item, index) =>
                 <ItemCard item={item} key={index}></ItemCard>
             )}
             <style jsx>{`

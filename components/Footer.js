@@ -1,4 +1,4 @@
-import style from 'css/Footer.module.scss'
+import style from 'components/Footer.module.scss'
 
 export default () => {
     return (

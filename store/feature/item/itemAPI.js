@@ -30,12 +30,13 @@ const items = [...(Array(60).keys())].map(id => {
     }
 })
 
-export default (ids) => {
+const fetchData = (ids) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            console.log('call api');
             const result = filter(items, (item) => ids.includes(item.id))
             resolve(result)
         }, 1000);
     })
 }
+
+export default fetchData

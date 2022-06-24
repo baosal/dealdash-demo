@@ -3,7 +3,7 @@ import ItemRow from 'components/item/ItemRow'
 import style from './ItemContainer.module.scss'
 import { throttle } from 'lodash'
 
-const maxItem = 6
+const maxItem = 60
 
 const calculateItemsPerRow = () => {
     if (!window) {
@@ -21,7 +21,7 @@ const calculateItemsPerRow = () => {
 const ListCard = React.memo(() => {
     const scrollEl = useRef()
     const [itemsPerRow, setItemsPerRow] = React.useState(6)
-    const numberRows = Math.max(1, Math.round(maxItem / itemsPerRow))
+    const numberRows = Math.max(1, Math.round(maxItem / itemsPerRow -0.5))
     useEffect(() => {
         const debouncedHandleResize = throttle(() => {
             itemsPerRow = calculateItemsPerRow()
