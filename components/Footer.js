@@ -3,7 +3,6 @@ import style from 'css/Footer.module.scss'
 export default () => {
     return (
         <div className={style.wraper}>
-
             <nav className='background'>
                 <div className="wraper">
                     <div className="column">

@@ -1,6 +1,6 @@
 import { memo, useEffect, useState, useRef, useMemo } from 'react'
-import ItemCard from 'components/ItemCard'
-import getMockData from 'components/mockupItems'
+import ItemCard from 'components/item/ItemCard'
+import getMockData from 'components/item/itemAPI'
 import { throttle } from 'lodash'
 
 const RowItems = memo(({ itemsPerRow = 6, rowIndex }) => {
@@ -8,8 +8,11 @@ const RowItems = memo(({ itemsPerRow = 6, rowIndex }) => {
     const [items, setItems] = useState(new Array(itemsPerRow).fill(null))
     const [isDataFetched, setisDataFetched] = useState(false)
     const fetchData = async () => {
+        const startId = (rowIndex - 1)*itemsPerRow + 1
+        const endId  = rowIndex*itemsPerRow
+        const itemIds = Array(endId - startId + 1).fill().map((_, idx) => startId + idx)
         setisDataFetched(true)
-        const data = await getMockData(items.length, rowIndex)
+        const data = await getMockData(itemIds)
         setItems(data)
     }
     function checkAndFetchData() {

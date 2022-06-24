@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react'
-import RowItems from 'components/ItemRow'
-import style from 'css/ListCard.module.scss'
+import ItemRow from 'components/item/ItemRow'
+import style from './ItemContainer.module.scss'
 import { throttle } from 'lodash'
 
-const maxItem = 60
+const maxItem = 6
 
 const calculateItemsPerRow = () => {
     if (!window) {
@@ -35,7 +35,7 @@ const ListCard = React.memo(() => {
     return (
         <div className={style.wraper} ref={scrollEl}>
             {[...Array(numberRows)].map((elementInArray, index) => (
-                <RowItems itemsPerRow={itemsPerRow} key={`${index}_${itemsPerRow}`} rowIndex={index} />
+                <ItemRow itemsPerRow={itemsPerRow} key={`${index}_${itemsPerRow}`} rowIndex={index + 1} />
             ))}
         </div>
     )

@@ -1,7 +1,7 @@
 import { getSortedPostsData } from 'libs/posts';
 import Image from "next/image"
 import style from 'css/Dashboard.module.scss'
-import ItemContainer from 'components/ItemContainer'
+import ItemContainer from 'components/item/ItemContainer'
 import Header from 'components/Header'
 import Pagination from 'components/Pagination'
 import Footer from 'components/Footer';

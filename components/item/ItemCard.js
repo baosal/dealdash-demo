@@ -1,7 +1,7 @@
-import style from 'css/ItemCard.module.scss'
+import style from './ItemCard.module.scss'
 import Image from "next/image"
-import BidCooldown from "components/BidCooldown"
-import Price from "components/ItemPrice"
+import BidCooldown from "components/item/BidCooldown"
+import Price from "components/item/ItemPrice"
 import { Fragment, memo, useRef } from 'react'
 
 const ItemCard = memo(({ item = {} }) => {
