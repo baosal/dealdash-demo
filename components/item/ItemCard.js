@@ -12,7 +12,7 @@ const ItemCard = memo(({ item = {} }) => {
         refPrice.current.increasePrice()
         glowing.current.classList.add('glowing')
         setTimeout(() => {
-            glowing.current.classList.remove('glowing')
+            glowing.current && glowing.current.classList.remove('glowing')
         }, 2000)
     }
     return (

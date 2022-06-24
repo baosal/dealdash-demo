@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import counterReducer from 'store/feature/counter/counterSlice'
+import counterSlice from 'store/feature/counter/counterSlice'
+import ItemSlice from 'store/feature/item/ItemSlice'
 
 export function makeStore() {
   return configureStore({
-    reducer: { counter: counterReducer },
+    reducer: { counter: counterSlice, item: ItemSlice },
   })
 }
 

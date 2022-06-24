@@ -1,5 +1,6 @@
 import { maxColdown } from 'const'
 import { filter } from 'lodash'
+
 const userNames = ["chief1154", "Darfresal", "Dmula7", "April", "kballs", "grantdyer12", "nicknevan1991"];
 const itemImg = ['/1.jpg', '/3.jpg', '/4.jpg', '/5.jpg', '/6.jpg', '/7.jpg', '/8.jpg', '/9.jpg', '/10.jpg', '/2.jpg',]
 
@@ -32,6 +33,7 @@ const items = [...(Array(60).keys())].map(id => {
 export default (ids) => {
     return new Promise((resolve) => {
         setTimeout(() => {
+            console.log('call api');
             const result = filter(items, (item) => ids.includes(item.id))
             resolve(result)
         }, 1000);
